@@ -23,11 +23,14 @@ public class Twitter {
 	 * Metoda koja unosi novu poruku u listu poruka korisnika
 	 * @param korisnik korisnicko ime
 	 * @param poruka poruka korisnika
+	 * @throws java.lang.RuntimeException ako je poruka ili korisnicko ime pogresno uneto
 	 */
 	public void unesi(String korisnik, String poruka) {
+		if(korisnik==null || korisnik.equals("") || poruka==null || poruka.equals(""))
+			throw new RuntimeException("Pogresno uneto korisnicko ime ili poruka korisnika");
 		// Pravi se nova poruka i puni podacima.
 		TwitterPoruka tp = new TwitterPoruka();
-		tp.setKorisnik("korisnik");
+		tp.setKorisnik(korisnik); //"korisnik" - korsnik Bug otklonjen. 2.4.2017
 		tp.setPoruka(poruka);
 		// Poruka se unosi u listu na kraj
 		poruke.addLast(tp);
@@ -57,7 +60,7 @@ public class Twitter {
 		for (int i = 0; i < poruke.size(); i++)
 			if (poruke.get(i).getPoruka().indexOf(tag) != -1)
 				if (brojac < maxBroj) {
-					rezultat[brojac + 1] = poruke.get(i);
+					rezultat[brojac] = poruke.get(i); //brojac+1-brojac Bug otklonjen.2.4.2017
 					brojac++;
 				} else
 					break;

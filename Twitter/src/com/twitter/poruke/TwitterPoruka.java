@@ -52,4 +52,35 @@ public class TwitterPoruka {
 	public String toString() {
 		return "KORISNIK:" + korisnik + " PORUKA:" + poruka;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((korisnik == null) ? 0 : korisnik.hashCode());
+		result = prime * result + ((poruka == null) ? 0 : poruka.hashCode());
+		return result;
+	}
+	@Override
+	//Morali smo dodati metodu zbor testiranja
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TwitterPoruka other = (TwitterPoruka) obj;
+		if (korisnik == null) {
+			if (other.korisnik != null)
+				return false;
+		} else if (!korisnik.equals(other.korisnik))
+			return false;
+		if (poruka == null) {
+			if (other.poruka != null)
+				return false;
+		} else if (!poruka.equals(other.poruka))
+			return false;
+		return true;
+	}
+	
 }
