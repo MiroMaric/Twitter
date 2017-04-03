@@ -1,6 +1,7 @@
 package com.twitter.poruke;
 /**
- * *JUnit and javadoc -domaci zadatak 2017*
+ * Ova klasa sadrzi informacije o korisnickom imenu, poruci korisnika kao i toString,equals i get,set metode
+ * za navedene atribute.
  * @author MiroMaric
  * @version 1.0
  */
@@ -15,15 +16,16 @@ public class TwitterPoruka {
 	private String poruka;
 
 	/**
+	 * Metoda vraca korisnicko ime
 	 * @return orisnicko ime
 	 */
 	public String getKorisnik() {
 		return korisnik;
 	}
 	/**
-	 * 
-	 * @param korisnik -korisnicko ime
-	 * @throws java.lang.RuntimeException -kada je ime korisnika pogresno uneto
+	 * Metoda postavlja korisnicko ime
+	 * @param korisnik korisnicko ime
+	 * @throws java.lang.RuntimeException kada je ime korisnika null ili je prazan String
 	 */
 	public void setKorisnik(String korisnik) {
 		if (korisnik == null || korisnik.isEmpty()) //!korsnik.isEmpty()-korisnik.isEmpty() Bug otklonjen! 2.4.2017
@@ -32,6 +34,7 @@ public class TwitterPoruka {
 	}
 
 	/**
+	 * Metoda vraca poruku korisnika
 	 * @return poruka korisnika
 	 */
 	public String getPoruka() {
@@ -39,8 +42,9 @@ public class TwitterPoruka {
 	}
 
 	/**
-	 * @param poruka -poruka korisnika
-	 * @throws java.lang.RuntimeException -kada je poruka pogresno uneta
+	 * Metoda postavlja poruku korisnika
+	 * @param poruka poruka korisnika
+	 * @throws java.lang.RuntimeException kada je poruka null, prazan Strng ili je duza od 140 karaktera
 	 */
 	public void setPoruka(String poruka) {
 		if (poruka == null || poruka.equals(new String("")) || poruka.length() > 140)
@@ -53,15 +57,7 @@ public class TwitterPoruka {
 		return "KORISNIK:" + korisnik + " PORUKA:" + poruka;
 	}
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((korisnik == null) ? 0 : korisnik.hashCode());
-		result = prime * result + ((poruka == null) ? 0 : poruka.hashCode());
-		return result;
-	}
-	@Override
-	//Morali smo dodati metodu zbor testiranja
+	//Morali smo dodati metodu zbog testiranja
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

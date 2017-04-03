@@ -3,7 +3,9 @@ package com.twitter;
 import java.util.LinkedList;
 import com.twitter.poruke.TwitterPoruka;
 /**
- * JUnit and javadoc -domaci zadatak 2017
+ * Ova klasa sadrzi listu poruka korisnika kao i medotde koje sluze za manipulaciju nad njom:
+ * ubacivanje poruka u listu, vracanje svih poruka kao i za vracanje onih poruka koje sadrze
+ * odredjeni tag.
  * @author MiroMaric
  * @version 2.0
  *
@@ -14,6 +16,7 @@ public class Twitter {
 	 */
 	private LinkedList<TwitterPoruka> poruke = new LinkedList<TwitterPoruka>();
 	/**
+	 * Metoda vraca listu poruka(sve poruke korisnika)
 	 * @return listu poruka koju su poslali korisnici
 	 */
 	public LinkedList<TwitterPoruka> vratiSvePoruke() {
@@ -23,7 +26,8 @@ public class Twitter {
 	 * Metoda koja unosi novu poruku u listu poruka korisnika
 	 * @param korisnik korisnicko ime
 	 * @param poruka poruka korisnika
-	 * @throws java.lang.RuntimeException ako je poruka ili korisnicko ime pogresno uneto
+	 * @throws java.lang.RuntimeException ako je korisnik jednak null,prazan String ili je poruka
+	 * jednaka null,prazan String
 	 */
 	public void unesi(String korisnik, String poruka) {
 		if(korisnik==null || korisnik.equals("") || poruka==null || poruka.equals(""))
@@ -39,7 +43,7 @@ public class Twitter {
 	 * Metoda koja vraca poruke u vidu niza koje sadrza odredjen tag
 	 * @param maxBroj poruka koje mogu sadrzati zadati tag
 	 * @param tag dati tag koji se proverava u datim porukama korisnika
-	 * @throws java.lang.RuntimeException ukoliko je tag pogresno unet
+	 * @throws java.lang.RuntimeException ukoliko je tag null ili je prazan String
 	 * @return niz poruka sa zadatim tagom
 	 */
 	public TwitterPoruka[] vratiPoruke(int maxBroj, String tag) {
